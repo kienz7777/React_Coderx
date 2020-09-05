@@ -7,8 +7,10 @@ function TodoItem(props) {
     if(item.isComplete){
         className += ' TodoItem-complete'
     }
+
+    const {onClick} = props;
     return (
-        <div className={className}>
+        <div onClick={onClick} className={className}>
             <p>{props.item.title}</p>
         </div>
     )

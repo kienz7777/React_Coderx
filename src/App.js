@@ -12,12 +12,35 @@ function App() {
     {title: 'Đi đu đi đưa'}
   ]);
 
+  function onItemClicked(item){
+    //setTodoItems([{title:'dop'}]);
+    return (event)=>{
+      console.log(item);
+
+      const isComplete = item.isComplete;
+      const index = todoItems.indexOf(item);
+
+      setTodoItems(
+        [
+          ...todoItems.slice(0,index),
+          {
+            ...item,
+            isComplete : !isComplete
+          },
+          ...todoItems.slice(index + 1)
+        ]
+      );
+      
+      console.log(index);
+    }
+  }
+
   return (
     <div className="App">  
 
       {
         todoItems.map((item,index) => 
-          <TodoItem key={index} item={item}/>
+          <TodoItem key={index} item={item} onClick={onItemClicked(item)}/>
         )
       }
 
