@@ -1,4 +1,6 @@
 import React from 'react'
+import checkImg from '../img/check.svg'
+import checkCompleteImg from '../img/check-complete.svg'
 
 function TodoItem(props) {
     
@@ -9,9 +11,18 @@ function TodoItem(props) {
     }
 
     const {onClick} = props;
+
+    let url = checkImg;
+    if(item.isComplete){
+        url = checkCompleteImg;
+    }
+
     return (
         <div onClick={onClick} className={className}>
+
+            <img src={url} width={32} ></img>
             <p>{props.item.title}</p>
+            
         </div>
     )
 }
